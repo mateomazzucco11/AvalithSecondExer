@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { ListProducts } from './components/ListProducts';
 
 export const ProductApp = () => {
 
@@ -43,56 +44,11 @@ export const ProductApp = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className='content-form'>
-        <input
-          type='text'
-          name='title'
-          placeholder='Titulo'
-          onChange={handleChange}
-        />
-        <input
-          type='number'
-          name='price'
-          placeholder='Precio'
-          onChange={handleChange}
-        />
-        <input
-          type='text'
-          name='category'
-          placeholder='Categoria'
-          onChange={handleChange}
-        />
-        <input
-          type='text'
-          name='description'
-          placeholder='Descripción'
-          onChange={handleChange}
-        />
-        <div>
-          <button
-            type='submit'
-          >
-            Agregar
-          </button>
-        </div>
-      </form>
-      <div className='content-card'>
-        {
-          data.map(p => {
-            return (
-              <ul key={p.id}>
-                <li>
-                  <img src={p.image} alt={p.title} />
-                  <h1 >{p.title}</h1>
-                  <p >{p.description}</p>
-                  <p >{p.category}</p>
-                  <h2 >${p.price}</h2>
-                </li>
-              </ul>
-            )
-          })
-        }
-      </div>
+      <ListProducts
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        data={data}
+      />
     </div>
   )
 }
